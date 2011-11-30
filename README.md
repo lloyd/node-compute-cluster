@@ -27,36 +27,36 @@ a responsive yet efficient computation server.
 
 ## Installation
 
-  $ npm install compute-cluster
+    $ npm install compute-cluster
 
 ## Usage
 
 First you write your main program:
 
-  const computecluster = require('../lib/compute-cluster');
-  
-  // allocate a compute cluster
-  var cc = new computecluster({
-    module: './simple_worker.js'
-  });
-  
-  var toRun = 10
-  
-  // then you can perform work in parallel
-  for (var i = 0; i < toRun; i++) {
-    cc.enqueue({}, function(err, r) {
-      if (err) console.log("an error occured:", err);
-      else console.log("it's nice:", r);
-      if (--toRun === 0) cc.exit();
+    const computecluster = require('../lib/compute-cluster');
+    
+    // allocate a compute cluster
+    var cc = new computecluster({
+      module: './simple_worker.js'
     });
-  };
+    
+    var toRun = 10
+    
+    // then you can perform work in parallel
+    for (var i = 0; i < toRun; i++) {
+      cc.enqueue({}, function(err, r) {
+        if (err) console.log("an error occured:", err);
+        else console.log("it's nice:", r);
+        if (--toRun === 0) cc.exit();
+      });
+    };
 
 Next you write your "worker" program:
 
-  process.on('message', function(m) {
-    for (var i = 0; i < 100000000; i++);
-    process.send('complete');
-  });
+    process.on('message', function(m) {
+      for (var i = 0; i < 100000000; i++);
+      process.send('complete');
+    });
 
 All done!  Now you're distributing your computational load across multiple processes.
 
@@ -72,17 +72,17 @@ Allocates a computation cluster.  Options include:
 
 Example:
 
-  var cc = new require('compute-cluster')({
+    var cc = new require('compute-cluster')({
       module: './foo.js',
       max_backlog: -1
-  });
+    });
 
 ### Event: 'error'
 
 An error event will be emited in exceptional circumstances.  Like if a child crashes.
 Catch error events like this:
 
-  cc.on('error', function(e) { console.log('OMG!', e); });
+    cc.on('error', function(e) { console.log('OMG!', e); });
 
 Default behavior is to exit on error if you don't catch.
 
@@ -91,7 +91,7 @@ Default behavior is to exit on error if you don't catch.
 Events raise that hold an english, developer readable string describing
 the state of the implementation.
 
-### `cc.enqueue(<args>, [cb])`
+### cc.enqueue(<args>, [cb])
 
 enqueue a job to be run on the next available compute process, spawning one
 if required (and `max_processes isn't hit).
@@ -102,7 +102,7 @@ args will be passed into the process (available via `process.on('message', ...)`
 `err` indicates hard errors, response indicates successful roundtrip to the
 compute process and is whatever the decided to `process.send()` in response. 
 
-### `cc.exit([cb])`
+### cc.exit([cb])
 
 Kill all child processes, invoking callback (with err param) when complete.
 

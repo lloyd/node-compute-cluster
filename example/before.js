@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 function doWork() {
   for (var i = 0; i < 100000000; i++);
 }

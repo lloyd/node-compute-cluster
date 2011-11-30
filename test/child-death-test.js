@@ -32,12 +32,17 @@ suite.addBatch({
       "succeeds": function (r) {
         assert.equal(r.r, 'hello');
       },
-      "finally, exit": {
+      "and killing a child": {
         topic: function(r) {
-          r.cc.exit(this.callback);
+          var cb = this.callback;
+          r.cc.on('error', function(e) {
+            cb(e);
+          });
+          process.kill(Object.keys(r.cc._kids)[0]);
         },
-        "also succeeds": function(err) {
-          assert.isNull(err);
+        "causes an error event": function(err) {
+          assert.isString(err);
+          assert.match(err, /^compute process \(\d+\) dies with code: 1$/);
         }
       }
     }

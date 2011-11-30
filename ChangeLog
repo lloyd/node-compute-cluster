@@ -1,2 +1,5 @@
+0.0.2:
+	* the callback to .exit() really is optional
+
 0.0.1:
 	* the beginning of time

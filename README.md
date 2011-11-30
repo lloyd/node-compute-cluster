@@ -33,11 +33,11 @@ a responsive yet efficient computation server.
 
 First you write your main program:
 
-    const computecluster = require('../lib/compute-cluster');
+    const computecluster = require('compute-cluster');
     
     // allocate a compute cluster
     var cc = new computecluster({
-      module: './simple_worker.js'
+      module: './worker.js'
     });
     
     var toRun = 10
@@ -51,7 +51,7 @@ First you write your main program:
       });
     };
 
-Next you write your "worker" program:
+Next you write your `worker.js` program:
 
     process.on('message', function(m) {
       for (var i = 0; i < 100000000; i++);

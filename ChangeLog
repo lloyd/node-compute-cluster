@@ -1,3 +1,9 @@
+0.0.4:
+	* explicitly relay env to children, as default of child_process.fork seems to be not to do this
+
+0.0.3:
+	* fix github url in package.json
+
 0.0.2:
 	* the callback to .exit() really is optional
 

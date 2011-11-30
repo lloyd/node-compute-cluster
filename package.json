@@ -5,7 +5,7 @@
   "version": "0.0.3",
   "repository": {
     "type": "git",
-    "url": "https://github.com/lloyd/node-process-cluster.git"
+    "url": "https://github.com/lloyd/node-compute-cluster.git"
   },
   "main": "lib/compute-cluster",
   "engines": {

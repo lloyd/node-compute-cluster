@@ -1,3 +1,6 @@
+0.0.5:
+	* fix bug - queued work should be started even if enqueue is invoked from a completion callback.
+
 0.0.4:
 	* explicitly relay env to children, as default of child_process.fork seems to be not to do this
 

@@ -2,7 +2,7 @@
   "author": "Lloyd Hilaiel <lloyd@hilaiel.com> (http://lloyd.io)",
   "name": "compute-cluster",
   "description": "Local process cluster management for distributed computation",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "repository": {
     "type": "git",
     "url": "https://github.com/lloyd/node-compute-cluster.git"

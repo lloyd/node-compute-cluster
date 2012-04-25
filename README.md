@@ -70,8 +70,7 @@ Allocates a computation cluster.  Options include:
   * `max_processes` - the maximum number of processes to spawn (default is `ciel(#cpus * 1.25)`)
   * `max_backlog` - the maximum length of the backlog, -1 indicates no limit (default is 10 * max_processes)
                     an error will be returned when max backlog is hit.
-  * `max_request_time` - the maximum amount of time a request should take, in seconds.  (
-                    an error will be returned when we expect a request will take longer.
+  * `max_request_time` - the maximum amount of time a request should take, in seconds.  An error will be returned when we expect a request will take longer.
 
 Example:
 
@@ -97,7 +96,7 @@ the state of the implementation.
 ### cc.enqueue(<args>, [cb])
 
 enqueue a job to be run on the next available compute process, spawning one
-if required (and `max_processes isn't hit).
+if required (and `max_processes` isn't hit).
 
 args will be passed into the process (available via `process.on('message', ...)`).
 

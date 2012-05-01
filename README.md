@@ -8,7 +8,7 @@ allows libraries to internally thread their calls and use multiple cores.
   [node-bcrypt]: https://github.com/ncb000gt/node.bcrypt.js
 
 While this is pretty awesome, it is significant work for library implementors,
-and as this pattern becomes rampant, the application author looses fine grained
+and as this pattern becomes rampant, the application author loses fine grained
 control over the resource usage of their server as well as the relative priority
 of compute tasks.
 

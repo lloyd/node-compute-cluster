@@ -1,5 +1,7 @@
 ## Distributed Computation for NodeJS
 
+[![Build Status](https://secure.travis-ci.org/lloyd/node-compute-cluster.png)](http://travis-ci.org/lloyd/node-compute-cluster)
+
 How can you build a responsive and robust nodejs server that does some heavy
 computational lifting?  Some node libraries (like the awesome [node-bcrypt][])
 do their own threading internally and combine that with an async API.  This

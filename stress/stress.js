@@ -2,7 +2,8 @@
 
 const
 computecluster = require('../lib/compute-cluster'),
-os = require('os');
+os = require('os'),
+crypto = require('crypto');
 
 // allocate a compute cluster
 var cc = new computecluster({
@@ -11,16 +12,22 @@ var cc = new computecluster({
 });
 
 function addWork() {
-  cc.enqueue("echome", function(err, r) {
-    if (err) {
-      process.stderr.write("to err is lame!  err: " + err + "\n");
-      process.exit(9);
-    }
-    if (r != "echome") {
-      process.stderr.write("string not problerly echo'd.  LAME!\n");
-      process.exit(9);
-    }
-    addWork();
+  crypto.randomBytes(16, function(ex, buf) {
+    if (ex) throw ex;
+    var str = buf.toString('base64');
+    cc.enqueue(str, function(err, r) {
+      if (err) {
+        process.stderr.write("to err is lame!  err: " + err + "\n");
+        process.exit(9);
+      }
+      if (r !== str) {
+        process.stderr.write("string not problerly echo'd.  LAME!\n");
+        process.stderr.write("want/got: " + str + "/" + r + "\n");
+        process.exit(9);
+      }
+      console.log(str);
+      addWork();
+    });
   });
 }
 

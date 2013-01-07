@@ -29,36 +29,42 @@ a responsive yet efficient computation server.
 
 ## Installation
 
-    $ npm install compute-cluster
+``` sh
+$ npm install compute-cluster
+```
 
 ## Usage
 
 First you write your main program:
 
-    const computecluster = require('compute-cluster');
-    
-    // allocate a compute cluster
-    var cc = new computecluster({
-      module: './worker.js'
-    });
-    
-    var toRun = 10
-    
-    // then you can perform work in parallel
-    for (var i = 0; i < toRun; i++) {
-      cc.enqueue({}, function(err, r) {
-        if (err) console.log("an error occured:", err);
-        else console.log("it's nice:", r);
-        if (--toRun === 0) cc.exit();
-      });
-    };
+``` js
+const computecluster = require('compute-cluster');
+
+// allocate a compute cluster
+var cc = new computecluster({
+  module: './worker.js'
+});
+
+var toRun = 10
+
+// then you can perform work in parallel
+for (var i = 0; i < toRun; i++) {
+  cc.enqueue({}, function(err, r) {
+    if (err) console.log("an error occured:", err);
+    else console.log("it's nice:", r);
+    if (--toRun === 0) cc.exit();
+  });
+};
+```
 
 Next you write your `worker.js` program:
 
-    process.on('message', function(m) {
-      for (var i = 0; i < 100000000; i++);
-      process.send('complete');
-    });
+``` js
+process.on('message', function(m) {
+  for (var i = 0; i < 100000000; i++);
+  process.send('complete');
+});
+```
 
 All done!  Now you're distributing your computational load across multiple processes.
 
@@ -76,17 +82,21 @@ Allocates a computation cluster.  Options include:
 
 Example:
 
-    var cc = new require('compute-cluster')({
-      module: './foo.js',
-      max_backlog: -1
-    });
+``` js
+var cc = new require('compute-cluster')({
+  module: './foo.js',
+  max_backlog: -1
+});
+```
 
 ### Event: 'error'
 
 An error event will be emited in exceptional circumstances.  Like if a child crashes.
 Catch error events like this:
 
-    cc.on('error', function(e) { console.log('OMG!', e); });
+``` js
+cc.on('error', function(e) { console.log('OMG!', e); });
+```
 
 Default behavior is to exit on error if you don't catch.
 

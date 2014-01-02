@@ -17,5 +17,10 @@
   "devDependencies": {},
   "scripts": {
     "test": "vows"
+  },
+  "bugs": "https://github.com/lloyd/node-compute-cluster/issues",
+  "licenses": {
+    "type": "MIT",
+    "url": "https://raw.github.com/lloyd/node-compute-cluster/master/LICENSE"
   }
 }

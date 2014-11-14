@@ -17,7 +17,7 @@ suite.addBatch({
     topic: function() {
       return new computeCluster({
         module: path.join(__dirname, 'workers', 'echo.js'),
-        promise: true,
+        promise: true
       });
     },
     "runs without issue": function (cc) {

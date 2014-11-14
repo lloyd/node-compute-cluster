@@ -38,11 +38,12 @@ suite.addBatch({
         }
       },
       "fails": function (r) {
-        assert.ok(/cannot enqueue work: maximum expected work duration exceeded \(\d.\d+s\)/.test(r.err));
+        assert.ok(/cannot enqueue work: maximum expected work duration exceeded \(\d.\.?\d+s\)/.test(r.err));
       },
       "finally, exit": {
         topic: function(r) {
           r.cc.exit(this.callback);
+          this.callback(null);
         },
         "also succeeds": function(err) {
           assert.isNull(err);

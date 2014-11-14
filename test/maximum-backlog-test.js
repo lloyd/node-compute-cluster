@@ -38,6 +38,7 @@ suite.addBatch({
       "finally, exit": {
         topic: function(r) {
           r.cc.exit(this.callback);
+          this.callback(null);
         },
         "also succeeds": function(err) {
           assert.isNull(err);

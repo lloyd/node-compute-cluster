@@ -12,7 +12,7 @@
     "node": ">= 0.6.2"
   },
   "dependencies": {
-    "vows": "0.6.0"
+    "vows": "0.7.0"
   },
   "devDependencies": {},
   "scripts": {

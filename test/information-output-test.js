@@ -32,7 +32,7 @@ suite.addBatch({
       topic: function(cc) {
         var cb = this.callback;
         cc.enqueue("hello", function(e, r) {
-          cb.call(self, { cc: cc, r: r });
+          cb.call(null, { cc: cc, r: r });
         });
 
       },

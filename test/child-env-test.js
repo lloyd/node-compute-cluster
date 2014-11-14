@@ -26,7 +26,7 @@ suite.addBatch({
         process.env['FOO'] = 'bar';
         var cb = this.callback;
         cc.enqueue("FOO", function(e, r) {
-          cb.call(self, { cc: cc, r: r });
+          cb.call(null, { cc: cc, r: r });
         });
       },
       "succeeds": function (r) {

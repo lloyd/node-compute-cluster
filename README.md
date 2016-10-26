@@ -78,7 +78,8 @@ Allocates a computation cluster.  Options include:
   * `max_processes` - the maximum number of processes to spawn (default is `ciel(#cpus * 1.25)`)
   * `max_backlog` - the maximum length of the backlog, -1 indicates no limit (default is 10 * max_processes)
                     an error will be returned when max backlog is hit.
-  * `max_request_time` - the maximum amount of time a request should take, in seconds.  An error will be returned when we expect a request will take longer.
+  * `max_request_time` - the maximum amount of time a request should take, in seconds. An error will be returned when we expect a request will take longer.
+  * `max_execution_time` - the maximum amount of time we allow a job to run, in seconds. The worker responsible for this job will be killed if it lasts longer.
 
 Example:
 

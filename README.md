@@ -50,7 +50,7 @@ var toRun = 10
 // then you can perform work in parallel
 for (var i = 0; i < toRun; i++) {
   cc.enqueue({}, function(err, r) {
-    if (err) console.log("an error occured:", err);
+    if (err) console.log("an error occurred:", err);
     else console.log("it's nice:", r);
     if (--toRun === 0) cc.exit();
   });
@@ -91,7 +91,7 @@ var cc = new require('compute-cluster')({
 
 ### Event: 'error'
 
-An error event will be emited in exceptional circumstances.  Like if a child crashes.
+An error event will be emitted in exceptional circumstances.  Like if a child crashes.
 Catch error events like this:
 
 ``` js
